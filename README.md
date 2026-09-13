@@ -14,7 +14,7 @@ npm run dev
 1. Supabaseで新規プロジェクトを作成します。
 2. SQL Editorで `supabase/schema.sql` を実行します。
 3. GitHubでOAuth Appを作成し、SupabaseのAuthentication > Sign In / ProvidersでGitHubを有効化します。
-4. `.env.example` を `.env.local` にコピーし、Connect画面のProject URLとPublishable keyを設定します。
+4. `.env.example` を `.env.local` にコピーし、Connect画面のProject URLとPublishable keyを設定します。GitHub Pages用の値は `.env.production` に設定済みです。
 5. SupabaseのURL ConfigurationでSite URLとRedirect URLsにGitHub Pagesの公開URLを登録します。
 
 GitHub OAuth AppのAuthorization callback URLには、SupabaseのGitHubプロバイダー画面に表示される次の形式のURLを設定します。
@@ -25,10 +25,7 @@ https://<project-ref>.supabase.co/auth/v1/callback
 
 ## GitHub Pages
 
-リポジトリのSettings > PagesでSourceを「GitHub Actions」に設定します。Actions variablesへ次の2項目を登録してください。
-
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_PUBLISHABLE_KEY`
+リポジトリのSettings > PagesでSourceを「GitHub Actions」に設定します。
 
 `main`ブランチへpushすると自動公開されます。
 
