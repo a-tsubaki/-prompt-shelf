@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   deploy:
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -27,6 +28,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run typecheck
+      - run: npm run test:security
       - run: npm run build
       - uses: actions/configure-pages@v5
         with:
